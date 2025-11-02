@@ -5,11 +5,13 @@ const ideaSchema = new mongoose.Schema({
   description: { type: String, required: true },
   category: { type: String, required: true },
   authorId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-  votes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }], // lista de usuários que votaram
+  votes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
   createdAt: { type: Date, default: Date.now }
+}, {
+  toJSON: { virtuals: true },
+  toObject: { virtuals: true }
 });
 
-// Virtual para contar votos facilmente
 ideaSchema.virtual('voteCount').get(function() {
   return this.votes.length;
 });
