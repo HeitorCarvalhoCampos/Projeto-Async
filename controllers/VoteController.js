@@ -1,4 +1,4 @@
-const Idea = require('../models/idea');
+const Idea = require('../models/Idea');
 
 class VoteController {
   static async toggleVote(req, res) {

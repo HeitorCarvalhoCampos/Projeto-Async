@@ -8,8 +8,8 @@ const connectDB = require('./db/conn');
 require('dotenv').config();
 
 // Importa models
-const User = require('models/user');
-const Idea = require('models/idea');
+const User = require('./models/User');
+const Idea = require('./models/Idea');
 
 // Inporta rotas
 const userRoutes = require('./routes/userRoutes');

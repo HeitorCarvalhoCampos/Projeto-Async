@@ -16,4 +16,5 @@ ideaSchema.virtual('voteCount').get(function() {
   return this.votes.length;
 });
 
-module.exports = mongoose.model('Idea', ideaSchema);
+module.exports = mongoose.models.Idea || mongoose.model('Idea', ideaSchema);
+
