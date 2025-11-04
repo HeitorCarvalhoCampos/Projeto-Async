@@ -1,4 +1,4 @@
-const Idea = require('../models/idea');
+const Idea = require('../models/Idea');
 
 module.exports = async function(req, res, next) {
   const idea = await Idea.findById(req.params.id);
