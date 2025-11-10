@@ -1,0 +1,59 @@
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 90vh;">
+  <div class="card shadow-lg border-0 p-4 rounded-4" style="max-width: 450px; width: 100%;">
+    <div class="text-center mb-4">
+      <h3 class="fw-semibold">Crie sua conta</h3>
+      <p class="text-light mb-0">É rápido e fácil 🚀</p>
+    </div>
+
+    <form action="/users/register" method="POST">
+      <div class="mb-3">
+        <label for="name" class="form-label">Nome completo</label>
+        <div class="input-group">
+          <span class="input-group-text bg-light"><i class="bi bi-person-fill"></i></span>
+          <input type="text" name="name" id="name" class="form-control" placeholder="Seu nome" required>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label">E-mail</label>
+        <div class="input-group">
+          <span class="input-group-text bg-light"><i class="bi bi-envelope-fill"></i></span>
+          <input type="email" name="email" id="email" class="form-control" placeholder="seuemail@exemplo.com" required>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">Senha</label>
+        <div class="input-group">
+          <span class="input-group-text bg-light"><i class="bi bi-lock-fill"></i></span>
+          <input type="password" name="password" id="password" class="form-control" placeholder="sua senha" required>
+          <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+            <i class="bi bi-eye"></i>
+          </button>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-success w-100 mt-2">
+        <i class="bi bi-check-circle me-2"></i> Registrar
+      </button>
+    </form>
+
+    <div class="text-center mt-4">
+      <p class="text-light mb-1">Já tem uma conta?</p>
+      <a href="/users/login" class="btn btn-outline-primary w-100">
+        <i class="bi bi-box-arrow-in-right me-2"></i> Fazer login
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.getElementById('togglePassword').addEventListener('click', function () {
+    const passwordInput = document.getElementById('password');
+    const icon = this.querySelector('i');
+    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordInput.setAttribute('type', type);
+    icon.classList.toggle('bi-eye');
+    icon.classList.toggle('bi-eye-slash');
+  });
+</script>

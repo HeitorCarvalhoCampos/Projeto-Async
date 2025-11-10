@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const Idea = require('../models/Idea');
 
 class UserController {
   // Página de registro
@@ -111,6 +112,30 @@ class UserController {
     } catch (err) {
       console.error("Erro ao fazer logout:", err);
       return res.status(500).json({ message: "Erro interno ao realizar logout." });
+    }
+  }
+
+  static async profilePage(req, res) {
+    const user = req.session.user;
+
+    if (!user) {
+      req.flash('error', 'Você precisa estar logado para acessar o perfil.');
+      return res.redirect('/users/login');
+    }
+
+    try {
+      // Buscar apenas ideias do usuário logado
+      const ideas = await Idea.find({ authorId: user._id }).sort({ createdAt: -1 }).lean();
+
+      if (req.headers.accept?.includes('application/json')) {
+        return res.status(200).json({ user, ideas });
+      } else {
+        return res.render('users/profile', { user, ideas });
+      }
+    } catch (err) {
+      console.error(err);
+      req.flash('error', 'Erro ao carregar ideias do usuário.');
+      return res.redirect('/');
     }
   }
 }

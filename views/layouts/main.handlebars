@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>{{title}}</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Estilos customizados -->
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top left, #111 0%, #1a1a1a 40%, #0f0f0f 100%);
+      color: #f8f9fa;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .container {
+      flex: 1;
+      max-width: 960px;
+    }
+
+    .card {
+      background: rgba(25, 25, 25, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      border-radius: 12px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, #007bff, #00c6ff);
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(90deg, #00c6ff, #007bff);
+      transform: scale(1.03);
+      transition: 0.2s ease;
+    }
+
+    footer {
+      background: #0d0d0d;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    footer a {
+      color: #00c6ff;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  {{> navbar }}
+
+  <div class="container py-5">
+    {{> messages }}
+    {{{ body }}}
+  </div>
+
+  <footer>
+    <p>💡 Project IDEAS — Compartilhe suas ideias. Desenvolvido por <a href="https://www.instagram.com/hccampos2025/" target="_blank">Heitor Campos</a>, <a href="https://www.instagram.com/vechie.zl/" target="_blank">Lucas Vechiez</a> e <a href="https://www.instagram.com/osamuelxavier__/" target="_blank">Samuel Xavier</a></p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

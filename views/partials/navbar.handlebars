@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm py-3">
+  <div class="container">
+    <!-- Logo -->
+    <a class="navbar-brand fw-bold fs-4 d-flex align-items-center" href="/">
+      <i class="bi bi-lightbulb-fill text-warning me-2"></i> Project <span class="text-success ms-1">IDEAS</span>
+    </a>
+
+    <!-- Botão de menu mobile -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegação">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Itens da Navbar -->
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav align-items-lg-center">
+        {{#if user}}
+          <li class="nav-item me-2">
+            <a href="/ideas" class="btn btn-outline-light">
+              <i class="bi bi-lightbulb me-1"></i> Ideias
+            </a>
+          </li>
+          <li class="nav-item me-2">
+            <a href="/ideas/create" class="btn btn-outline-success">
+              <i class="bi bi-plus-circle me-1"></i> Nova Ideia
+            </a>
+          </li>
+          <li class="nav-item dropdown me-2">
+            <a class="btn btn-outline-info dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-person-circle me-1"></i> {{user.name}}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="/users/profile"><i class="bi bi-person-lines-fill me-2"></i> Perfil</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item text-danger" href="/users/logout"><i class="bi bi-box-arrow-right me-2"></i> Sair</a></li>
+            </ul>
+          </li>
+        {{else}}
+          <li class="nav-item me-2">
+            <a href="/users/login" class="btn btn-outline-light">
+              <i class="bi bi-box-arrow-in-right me-1"></i> Login
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/users/register" class="btn btn-outline-light">
+              <i class="bi bi-person-plus me-1"></i> Registrar
+            </a>
+          </li>
+        {{/if}}
+      </ul>
+    </div>
+  </div>
+</nav>

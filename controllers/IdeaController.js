@@ -5,7 +5,7 @@ class IdeaController {
   static async list(req, res) {
     try {
       const ideas = await Idea.find().populate("authorId").sort({ votes: -1 });
-
+      
       if (req.headers.accept?.includes('application/json')) {
         return res.status(200).json({ message: "Lista de ideias carregada com sucesso", ideas });
       } else {
@@ -73,7 +73,10 @@ class IdeaController {
       if (req.headers.accept?.includes('application/json')) {
         return res.status(200).json({ idea });
       } else {
-        return res.render('ideas/details', { idea });
+        return res.render('ideas/details', { 
+          idea,
+          user: req.session.user || null  
+        });
       }
     } catch (err) {
       return res.status(500).json({ message: "Erro ao buscar ideia.", error: err.message });

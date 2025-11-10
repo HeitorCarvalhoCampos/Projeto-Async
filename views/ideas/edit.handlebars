@@ -1,0 +1,44 @@
+<div class="container mt-5">
+  <div class="card shadow-lg border-0 rounded-4 bg-dark text-light">
+    <div class="card-body p-5">
+      <h2 class="text-center mb-4 text-white fw-bold">
+        Editar Ideia
+      </h2>
+
+      <form action="/ideas/edit/{{idea._id}}" method="POST">
+        <div class="mb-4">
+          <label for="title" class="form-label fw-semibold text-white">Título da Ideia</label>
+          <input 
+            type="text" 
+            name="title" 
+            id="title" 
+            class="form-control form-control-lg bg-secondary text-white border-0" 
+            value="{{idea.title}}" 
+            placeholder="Digite o novo título da ideia..." 
+            required
+          >
+        </div>
+
+        <div class="mb-4">
+          <label for="description" class="form-label fw-semibold text-white">Descrição</label>
+          <textarea 
+            name="description" 
+            id="description" 
+            class="form-control form-control-lg bg-secondary text-white border-0" 
+            rows="4" 
+            placeholder="Atualize a descrição da sua ideia..."
+          >{{idea.description}}</textarea>
+        </div>
+
+        <div class="d-flex justify-content-between mt-4">
+          <a href="/ideas" class="btn btn-outline-light btn-lg px-4">
+            ← Voltar
+          </a>
+          <button type="submit" class="btn btn-success btn-lg px-4">
+            Atualizar Ideia
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

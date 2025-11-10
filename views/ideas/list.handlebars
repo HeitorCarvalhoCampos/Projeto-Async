@@ -1,0 +1,72 @@
+<h2 class="text-center mb-4 text-white">
+  Lista de Ideias
+</h2>
+
+<div class="text-center mb-4">
+  <a href="/ideas/create" class="btn btn-success btn-lg">Nova Ideia</a>
+</div>
+
+{{#if ideas.length}}
+  <div class="row justify-content-center">
+    {{#each ideas}}
+      <div class="col-md-6 mb-4">
+        <div 
+          class="card idea-card bg-dark text-light border-secondary shadow-sm h-100"
+          data-id="{{this._id}}"
+          data-author-id="{{this.authorId._id}}" 
+          style="cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; min-height: 300px; padding: 1rem;"
+        >
+          <div class="card-body position-relative">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <span class="badge bg-success">
+                👍 {{this.voteCount}} votos
+              </span>
+              {{#if this.category}}
+                <span class="badge bg-info text-dark">
+                  {{this.category}}
+                </span>
+              {{/if}}
+            </div>
+
+            <h4 class="card-title text-info">{{this.title}}</h4>
+            <p class="card-text text-light-50 mb-1 fs-5">
+              {{this.description}}
+            </p>
+          </div>
+
+          <div class="card-footer d-flex justify-content-between align-items-center border-secondary">
+            <form action="/votes/{{this._id}}" method="POST" style="display:inline;">
+              <button type="submit" class="btn btn-outline-success btn-sm vote-btn">
+                👍 Votar
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+
+  <script>
+    document.querySelectorAll('.idea-card').forEach(card => {
+      card.addEventListener('click', function(event) {
+        const clickedElement = event.target;
+        if (clickedElement.tagName === 'A' || clickedElement.tagName === 'BUTTON' || clickedElement.closest('form')) return;
+        const ideaId = this.dataset.id;
+        window.location.href = `/ideas/${ideaId}`;
+      });
+
+      card.addEventListener('mouseenter', () => {
+        card.style.transform = 'scale(1.05)';
+        card.style.boxShadow = '0 6px 20px rgba(255, 255, 255, 0.15)';
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'scale(1)';
+        card.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.2)';
+      });
+    });
+  </script>
+
+{{else}}
+  <p class="text-center text-muted">Nenhuma ideia cadastrada.</p>
+{{/if}}

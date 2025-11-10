@@ -1,0 +1,51 @@
+<div class="container mt-5 d-flex flex-column align-items-center">
+  <!-- Card do perfil -->
+  <div class="card shadow-lg border-0 rounded-4 p-4 mb-5" style="max-width: 450px; width: 100%;">
+    <div class="text-center mb-3">
+      <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" 
+           style="width: 90px; height: 90px; font-size: 2.5rem; font-weight: bold;">
+        {{user.name.[0]}}
+      </div>
+      <h3 class="fw-semibold">{{user.name}}</h3>
+      <p class="text-muted mb-0">{{user.email}}</p>
+    </div>
+
+    <hr>
+
+    <div class="text-center mt-3">
+      <a href="/users/logout" class="btn btn-outline-danger w-100">
+        <i class="bi bi-box-arrow-right me-2"></i> Sair da Conta
+      </a>
+    </div>
+  </div>
+
+  {{#if ideas.length}}
+    <h4 class="mb-3 text-white w-100 text-center mb-4">Minhas Ideias</h4>
+    <div class="row row-cols-1 row-cols-md-2 g-4 w-100 justify-content-center">
+      {{#each ideas}}
+        <div class="col d-flex justify-content-center">
+          <div class="card bg-dark text-light border-secondary shadow-sm h-100 p-3" style="max-width: 400px; width: 100%;">
+            <div class="card-body">
+              <div class="d-flex justify-content-between mb-2">
+                <span class="badge bg-success">👍 {{votes.length}} votos</span>
+                {{#if category}}
+                  <span class="badge bg-info text-dark">{{category}}</span>
+                {{/if}}
+              </div>
+              <h5 class="card-title text-info">{{title}}</h5>
+              <p class="card-text text-light-50">{{description}}</p>
+            </div>
+            <div class="card-footer d-flex justify-content-between border-secondary">
+              <a href="/ideas/edit/{{_id}}" class="btn btn-warning btn-sm">Editar</a>
+              <form action="/ideas/delete/{{_id}}" method="POST" style="display:inline;">
+                <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  {{else}}
+    <p class="text-center text-light mt-4">Você ainda não criou nenhuma ideia.</p>
+  {{/if}}
+</div>

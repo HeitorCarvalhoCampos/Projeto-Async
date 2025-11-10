@@ -1,0 +1,38 @@
+<section class="d-flex flex-column justify-content-center align-items-center text-center text-light" 
+         style="min-height: 90vh; background: linear-gradient(135deg, #0d6efd 0%, #6610f2 100%);">
+  
+  <div class="container">
+    <h1 class="display-5 fw-bold mb-4">
+      Bem-vindo ao <span class="text-warning">Project IDEAS 💡</span>
+    </h1>
+
+    {{#if user}}
+      <p class="lead mb-4">Olá, <strong>{{user.name}}</strong>! Inspire-se, explore e compartilhe suas ideias com o mundo.</p>
+
+      <div class="d-flex justify-content-center flex-wrap gap-3">
+        <a href="/ideas" class="btn btn-light btn-lg px-4 shadow-sm">
+          <i class="bi bi-lightbulb-fill me-2"></i> Ver Ideias
+        </a>
+        <a href="/ideas/create" class="btn btn-warning btn-lg px-4 shadow-sm text-dark fw-semibold">
+          <i class="bi bi-plus-circle me-2"></i> Nova Ideia
+        </a>
+      </div>
+
+    {{else}}
+      <p class="lead mb-4">Acesse sua conta ou crie uma nova para compartilhar suas ideias e descobrir as dos outros!</p>
+
+      <div class="d-flex justify-content-center flex-wrap gap-3">
+        <a href="/users/login" class="btn btn-outline-light btn-lg px-4">
+          <i class="bi bi-box-arrow-in-right me-2"></i> Entrar
+        </a>
+        <a href="/users/register" class="btn btn-success btn-lg px-4">
+          <i class="bi bi-person-plus me-2"></i> Registrar
+        </a>
+      </div>
+    {{/if}}
+  </div>
+
+  <footer class="mt-5 text-white-50 small">
+    <p>&copy; {{year}} Project IDEAS — Desenvolvido com Express e Node.js</p>
+  </footer>
+</section>
