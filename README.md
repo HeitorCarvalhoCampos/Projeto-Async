@@ -735,3 +735,7 @@ Gerencia scripts e dependências principais.
 }
 ```
 
+# Modelagem do Banco de Dados
+
+![Imagem do WhatsApp de 2025-11-09 à(s) 21 48 45_f651de25](https://github.com/user-attachments/assets/625b2521-e8b4-4d9d-ae81-7bccc19b5679)
+
